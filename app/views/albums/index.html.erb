@@ -1,39 +1,47 @@
 <form class="d-flex justify-content-center mt-5">
+<form class="d-flex justify-content-center  mt-5">
 <%= search_form_for @q do |f| %>
-<%= f.search_field :title_cont %>
-<%= f.submit %>
+<%= f.search_field :title_cont,class:' me-2',class:'opa-8 me-2',placeholder:'search by album' %>
+<%= f.submit class:'btn btn-success'%>
 <%end%>
 </form>
 
 
-<h3>Hello <%= current_admin.email %></h3>
+<h3 class="text-center t-colorfull my-5 fnt-tag shadow-text">Hello <%= current_admin.email %></h3>
 
-
-<%= link_to "New Album", new_album_path %>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class=" container d-flex  mb-4">
+   <%= link_to "New Album", new_album_path ,class:'btn btn-primary px-5 shadow-text shadow-black fnt-txt'%>
+</div>
+<div class="container opa-8">
+<div class="row row-cols-1  row-cols-md-5 g-4">
 <% @albums.each do |album| %>
 <% if album.admin == current_admin%>
-<div class="col">
-  <div class="card text-center">
-  
-     <%= link_to image_tag(album.images.first,class:"card-img-top",style:'width:30%'),album %>
-    <div class="card-body ">
-      <h5 class="card-title"> <%= album.title%></h5>
-      <P class="card-text"><%= album.discription %></P>
-      <%= album.all_tags %>    
-      <%= album.published %>  
-    </div>
-   
-<span >
- <%= link_to "Edit", edit_album_path(album),class:"btn btn-warning mx-3 px-4" %>
-  <%= link_to "Destroy", album_path(album),
+  <div class="col ">
+    <div class="card shadow-black h-100">
+      <%= link_to image_tag(album.images.first,class:"card-img-top img_size"),album %>
+      <div class="card-body bg-album-body">
+        <h5 class="card-title text-center mb-0 fnt-txt"><%= album.title%></h5>
+        <hr class="m-0">
+        <p class="card-text text-center mt-2 fnt-txt"><%= album.discription %></p>
+        <div class="card-footer bg-primary opa-8",>
+        <small class=" t-white fnt-txt">Tags #{<%= album.all_tags%>}</small>
+      </div>
+      <span class="d-flex justify-content-between">
+         <%= link_to "Edit", edit_album_path(album),class:"btn btn-outline-warning mt-1" %>
+         <%= link_to "Destroy", album_path(album),
                   method: :delete,
-                  data: { confirm: "Are you sure?" },class:"btn btn-danger ms-3"  %> 
-                  </span> 
-  </div> 
+                  data: { confirm: "Are you sure?" },class:"btn btn-outline-danger mt-1"  %> 
+      </span> 
+      </div>
+    </div>
   </div>
-  <%end%>
-  <%end%>
-
-
+  <% end %> 
+<%end%>
 </div>
+</div>
+
+
+
+
+
+

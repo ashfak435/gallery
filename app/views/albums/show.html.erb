@@ -1,20 +1,26 @@
-<div class="container text-center  bg-light justify-content-evenly my-4">
-<h1> <%= @album.title.capitalize %> </h1>
-
-
+<div class="container fnt-tag text-center my-2 shadow-text p-3">
+    <h1> <%= @album.title.capitalize %> </h1>
+</div>
+<div class="container">
+<div class="row  row-cols-1  row-cols-md-5 ">
 <% @album.images.each do|image| %>
-<div class="card" style="width: 18rem;">
-  <%= image_tag(image,class:'show-img_size') %>
-  <div class="card-body">
-    <p class="card-text">
+
+  <div class="col m-3 ">
+    <div class="card  shadow-black">
+        <%= image_tag(image,class:'img_size') %>
       <%if admin_signed_in?%>
-        <%= link_to "remove",delete_upload_album_url(@album, upload_id: image.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-dark ms-3" %>
-      <% end %></p>
+       
+         
+           
+             <%= link_to "remove",delete_upload_album_url(@album, upload_id: image.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-dark text-center" %>
+           
+       
+      <% end %> 
+    </div>
   </div>
+ 
+<%end%>
 </div>
-<%end %>
-
-
-<p> <%= @album.discription %> </p>
-
 </div>
+<p class="t-white fnt-txt text-center shadow-text my-5"> <%= @album.discription %> </p>
+
