@@ -1,0 +1,20 @@
+<div class="container text-center  bg-light justify-content-evenly my-4">
+<h1> <%= @album.title.capitalize %> </h1>
+
+
+<% @album.images.each do|image| %>
+<div class="card" style="width: 18rem;">
+  <%= image_tag(image,class:'show-img_size') %>
+  <div class="card-body">
+    <p class="card-text">
+      <%if admin_signed_in?%>
+        <%= link_to "remove",delete_upload_album_url(@album, upload_id: image.id), method: :delete, data: { confirm: "Are you sure?" },class:"btn btn-dark ms-3" %>
+      <% end %></p>
+  </div>
+</div>
+<%end %>
+
+
+<p> <%= @album.discription %> </p>
+
+</div>

@@ -1,0 +1,39 @@
+<form class="d-flex justify-content-center mt-5">
+<%= search_form_for @q do |f| %>
+<%= f.search_field :title_cont %>
+<%= f.submit %>
+<%end%>
+</form>
+
+
+<h3>Hello <%= current_admin.email %></h3>
+
+
+<%= link_to "New Album", new_album_path %>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<% @albums.each do |album| %>
+<% if album.admin == current_admin%>
+<div class="col">
+  <div class="card text-center">
+  
+     <%= link_to image_tag(album.images.first,class:"card-img-top",style:'width:30%'),album %>
+    <div class="card-body ">
+      <h5 class="card-title"> <%= album.title%></h5>
+      <P class="card-text"><%= album.discription %></P>
+      <%= album.all_tags %>    
+      <%= album.published %>  
+    </div>
+   
+<span >
+ <%= link_to "Edit", edit_album_path(album),class:"btn btn-warning mx-3 px-4" %>
+  <%= link_to "Destroy", album_path(album),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },class:"btn btn-danger ms-3"  %> 
+                  </span> 
+  </div> 
+  </div>
+  <%end%>
+  <%end%>
+
+
+</div>

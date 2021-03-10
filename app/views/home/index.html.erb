@@ -1,0 +1,32 @@
+<form class="d-flex justify-content-center  mt-5">
+<%= search_form_for @q do |f| %>
+<%= f.search_field :title_cont,class:' me-2',class:'opa-8 me-2',placeholder:'search by album' %>
+<%= f.submit class:'btn btn-success'%>
+<%end%>
+</form>
+<div class="container fnt-tag shadow-text p-3">
+<h3>Hello Stranger</h3>
+</div>
+<div class="container">
+<div class="row row-cols-1  row-cols-md-5 g-4">
+<% @albums.each do |album| %>
+<% if album.published?%>
+  <div class="col ">
+    <div class="card shadow-black opa-8 h-100">
+      <%= link_to image_tag(album.images[0],class:"card-img-top img_size"),album %>
+      <div class="card-body bg-album-body">
+        <h5 class="card-title text-center mb-0 fnt-txt"><%= album.title%></h5>
+        <hr class="m-0">
+        <p class="card-text text-center mt-2 fnt-txt"><%= album.discription %></p>
+        <div class="card-footer bg-primary opa-8",>
+        <small class=" t-white fnt-txt">Tags #{<%= album.all_tags%>}</small>
+      </div>
+      </div>
+    </div>
+  </div>
+  <% end %> 
+<%end%>
+</div>
+</div>
+
+

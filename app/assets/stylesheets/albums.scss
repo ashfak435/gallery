@@ -1,0 +1,53 @@
+// Place all the styles related to the Albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.text_underline_none{
+    text-decoration: none;
+    color: black;   
+}
+.shadow-black{
+     box-shadow: 15px 15px 5px;
+}
+.bg-album-body
+{
+    background-color: rgb(164, 211, 252);
+}
+.shadow-text
+{
+    text-shadow: 4px 4px 4px #000000;
+}
+.fnt-txt{
+    font-family: 'Akaya Telivigala', cursive;
+}
+.fnt-tag
+{
+    color:white;
+    font-family: 'Homemade Apple', cursive;
+}
+.opa-8
+{
+    opacity: .8;
+}
+body{
+    background-image: url(pexels-pixabay-531880.jpg);
+}
+.img_size{
+    width: 200px;
+    height: 200px;
+}
+.show-img_size{
+    width: 250px;
+    height: 250px;
+}
+.t-white
+{
+    color: white !important;
+}
+.fnt-20
+{
+    font-size: 20px;
+}
+.hover-text:hover
+{
+    color:red;
+}

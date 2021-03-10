@@ -1,0 +1,35 @@
+<%= form_with model: @album do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% @album.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :discription %><br>
+    <%= form.text_area :discription %>
+   <% @album.errors.full_messages_for(:discription).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+ </div>
+ <div>
+  <%= form.label :images %><br>
+ <%= form.file_field :images , multiple: true %>
+ </div>
+<div>
+    <div class="large-10 large-centered columns">
+      <%= form.text_field :all_tags, placeholder: "Tags separated with comma" %>
+    </div>
+    <div>
+    <%= form.label :published %>
+    <%= form.check_box :published %>
+    </div>
+ <%= form.number_field :admin_id ,id: :album_admin_id, value: current_admin.id,type: :hidden %>
+
+ </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %> 

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Gallery</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <%if admin_signed_in?%>
+          <%=link_to "Home",albums_path,class:"text_underline_none" %>
+          <%else%>
+          <%=link_to "Home",root_path,class:"text_underline_none" %>
+          <%end%>
+        </li>
+      </ul>
+     
+      
+     <% if admin_signed_in? %>
+         <%= link_to "sign out", destroy_admin_session_path ,method: :delete,class:"text_underline_none me-2 btn btn-danger"%>
+     <% else %>
+         <%= link_to "login", new_admin_session_path ,class:"text_underline_none btn btn-danger me-2" %>
+     <% end %>
+     <%= link_to "sign up", new_admin_registration_path,class:"text_underline_none btn btn-danger" %>
+    </div>
+  </div>
+</nav>
