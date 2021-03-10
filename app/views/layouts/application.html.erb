@@ -21,9 +21,16 @@
     <title>Gallery</title>
   </head>
   <body>
-    <%= render "layouts/navbar"%>
+  <div class="d-flex bg-success opa-8 justify-content-between">
+  <%= render "layouts/navbar"%>
+  <%if admin_signed_in?%>
+          <h1 class="mt-2 me-3"> <%=link_to "Gallery ",albums_path,class:"text_underline_none shadow-text t-white fnt-txt " %></h1>
+          <%else%>
+          <h1 class="mt-2 me-3"> <%=link_to "Gallery ",root_path,class:"text_underline_none t-white shadow-text fnt-txt " %></h1>
+          <%end%>
+    
 
-
+</div>
     <%= yield %>
 
     <!-- Optional JavaScript; choose one of the two! -->
