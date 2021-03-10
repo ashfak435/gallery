@@ -13,7 +13,9 @@
 <% if album.published?%>
   <div class="col ">
     <div class="card shadow-black opa-8 h-100">
+    <% if album.images.attached? %>
       <%= link_to image_tag(album.images[0],class:"card-img-top img_size"),album %>
+      <%end%>
       <div class="card-body bg-album-body">
         <h5 class="card-title text-center mb-0 fnt-txt"><%= album.title%></h5>
         <hr class="m-0">
